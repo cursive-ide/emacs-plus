@@ -3,7 +3,7 @@ plugins {
 }
 
 group 'com.cursive-ide'
-version '1.0-SNAPSHOT'
+version '0.3.200'
 
 intellij {
   version 'IC-2017.2'
