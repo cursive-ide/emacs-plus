@@ -1,0 +1,359 @@
+<!--
+  ~ Copyright (c) 2015. - Mark C. Feber
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+
+<idea-plugin url="https://github.com/cursive-ide/emacs-plus">
+  <id>com.cursive-ide.emacsplus</id>
+  <name>Emacs+ Patched</name>
+  <version>0.3.200</version>
+  <vendor url="https://ideogram.co.nz"
+          email="ideogram@ideogram.co.nz">
+    Ideogram, Ltd.
+  </vendor>
+
+  <description><![CDATA[
+      <p>Emacs like enhancements for IntelliJ IDEA.  The new keymaps <b>Emacs+</b> and <b>Mac Emacs+</b>:</p>
+      <ul>
+        <li>Add comment commands, including a reasonable comment-dwim <b><i>M-;</i></b> and comment-next/previous/kill for files whose language is <i>backed</i> by a Psi file</li>
+        <li>Implement Emacs style forward-word <b><i>M-f</i></b> and backward-word <b><i>M-b</i></b></li>
+        <li>Enhance <b><i>C-s</i></b> and <b><i>C-r</i></b> to support additional sub-commands on the search string, including:
+          <ul>
+            <li>isearch yank commands <b><i>C-w</i></b>, <b><i>C-y</i></b>, <b><i>M-y</i></b> and <b><i>C-M-y</i></b></li>
+            <li>isearch history <b><i>M-n</i></b> and <b><i>M-p</i></b></li>
+            <li>state toggles <b><i>M-c,  M-m,  M-w</i></b> and <b><i>M-r</i></b></li>
+            <li>proper exiting behavior on <b><i>C-g</i></b> and <b><i>ENTER</i></b></li>
+          </ul>
+          <br>
+        </li>
+        <li>Extend the default Kill Ring behavior so that the following bindings behave as expected:
+          <ul>
+            <li>yank <b><i>C-y</i></b>, yank-pop <b><i>M-y</i></b> and append-next-kill <b><i>C-M-w</i></b>
+          </ul>
+          <br>
+        <li>Enhance <b><i>C-x b</i></b> to respond to more keystrokes (e.g. <b><i>C-g, C-n, C-p</i></b>, etc.) and use <i>Recent Files</i> for searches</li>
+        <br>
+        <li>Implement tri-state recenter <b><i>C-l</i></b></li>
+        <li>Implement most of the expected case, space and transposition commands</li>
+        <li>Add basic movement bindings on some, but not all, tool windows</li>
+        <li>Add <b><i>C-g</i></b> on some, but not all, tool windows and dialogs</li>
+        <li>Add <b><i>C-x 1</i></b> and <b><i>C-x 0</i></b> in tool windows</li>
+        <li>Add Command as Meta on MacOS when using the <b>Mac Emacs+</b> keymap</li>
+        <li>Add assorted bindings of IntelliJ commands to more closely emulate Emacs</li>
+      </ul>
+      <br>
+      <p>This is a patched version of the <a href="https://plugins.jetbrains.com/plugin/7906-emacs-">original plugin</a>, which has been abandoned.</p>
+    ]]></description>
+
+  <change-notes><![CDATA[
+     <i>&beta 0.3.200</i><br>
+     <ul>
+      <li>Restore isearch changes after IntelliJ's backward incompatible changes in IDEA 15</li>
+       <br>
+      <li>Add back-to-indentation <b><i>M-m</i></b></li>
+      <li>Add delete-indentation <b><i>M-^</i></b> (and <b><i>C-u M-^</i></b>)</li>
+     </ul>
+     <i>&beta 0.3.110</i><br>
+     <ul>
+      <li>Support multiple carets in comment commands</li>
+      <li>Support additional movement commands on <b><i>C-x b</i></b></li>
+     </ul>
+    ]]>
+  </change-notes>
+
+  <!-- please see https://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
+  <idea-version since-build="131"/>
+
+  <!-- please see https://confluence.jetbrains.com/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
+       on how to target different products -->
+  <!--  uncomment to enable plugin in all products -->
+  <depends>com.intellij.modules.lang</depends>
+  <!--  -->
+
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+  </extensions>
+
+  <application-components>
+    <!-- Add your application components here -->
+    <component>
+      <implementation-class>cursive.emacsplus.EmacsPlus</implementation-class>
+    </component>
+  </application-components>
+
+  <project-components>
+    <!-- Add your project components here -->
+  </project-components>
+
+  <actions>
+    <!-- ***** New Emacs+ actions ***** -->
+    <!-- Transposition -->
+    <action id="Emacs+.TransposeChars" class="com.mulgasoft.emacsplus.actions.edit.TransposeChars" text="transpose-chars"
+            description="Interchange characters around point, moving forward one character">
+      <add-to-group group-id="EditorActions" anchor="first"/>
+    </action>
+    <action id="Emacs+.TransposeWords" class="com.mulgasoft.emacsplus.actions.edit.TransposeWords" text="transpose-words"
+            description="Interchange words around point, leaving point at end of them">
+      <add-to-group group-id="EditorActions" anchor="first"/>
+    </action>
+    <action id="Emacs+.TransposeLines" class="com.mulgasoft.emacsplus.actions.edit.TransposeLines" text="transpose-lines"
+            description="Exchange current line and previous line, leaving point after both">
+      <add-to-group group-id="EditorActions" anchor="first"/>
+    </action>
+
+    <!-- Caseification -->
+    <action id="Emacs+.DowncaseWord" class="com.mulgasoft.emacsplus.actions.edit.DowncaseWord" text="downcase-word"
+            description="Convert following word to lower case, moving over.">
+      <add-to-group group-id="EditorActions" anchor="first"/>
+    </action>
+    <action id="Emacs+.UpcaseWord" class="com.mulgasoft.emacsplus.actions.edit.UpcaseWord" text="upcase-word"
+            description="Convert following word to upper case, moving over">
+      <add-to-group group-id="EditorActions" anchor="after" relative-to-action="Emacs+.DowncaseWord"/>
+    </action>
+    <action id="Emacs+.CapitalizeWord" class="com.mulgasoft.emacsplus.actions.edit.CapitalizeWord" text="capitalize-word"
+            description="Capitalize the following word, moving over">
+      <add-to-group group-id="EditorActions" anchor="after" relative-to-action="Emacs+.UpcaseWord"/>
+    </action>
+
+    <!-- Space handling -->
+    <action id="Emacs+.DeleteBlankLines" class="com.mulgasoft.emacsplus.actions.edit.DeleteBlankLines" text="delete-blank-lines"
+            description="Delete blank lines">
+      <add-to-group group-id="EditorActions" anchor="first"/>
+    </action>
+    <action id="Emacs+.DeleteHorizSpace" class="com.mulgasoft.emacsplus.actions.edit.DeleteHorizSpace" text="delete-horizontal-space"
+            description="Delete all spaces and tabs around point">
+      <add-to-group group-id="EditorActions" anchor="first"/>
+    </action>
+    <action id="Emacs+.JustOneSpace" class="com.mulgasoft.emacsplus.actions.edit.JustOneSpace" text="just-one-space"
+            description="Delete all spaces and tabs around point, leaving one space">
+      <add-to-group group-id="EditorActions" anchor="first"/>
+    </action>
+    <action id="Emacs+.DeleteIndentation" class="cursive.emacsplus.actions.wrapper.DeleteIndentation" text="delete-indentation"
+            description="Join this line to previous and fix up whitespace at join">
+      <add-to-group group-id="EditorActions" anchor="first"/>
+    </action>
+
+    <!-- Yanking text -->
+    <action id="Emacs+.Yank" class="com.mulgasoft.emacsplus.actions.edit.Yank" text="yank"
+            description="Reinsert the last stretched of killed text">
+      <add-to-group group-id="EditorActions" anchor="first"/>
+    </action>
+    <action id="Emacs+.YankPop" class="com.mulgasoft.emacsplus.actions.edit.YankPop" text="yank-pop"
+            description="Replace just yanked stretch of killed text with a different stetch">
+      <add-to-group group-id="EditorActions" anchor="first"/>
+    </action>
+
+    <!-- Comment commands -->
+    <action id="Emacs+.CommentDwim" class="com.mulgasoft.emacsplus.actions.edit.comment.CommentDwim" text="comment-dwim"
+            description="Comment dwim (Do What I Mean)">
+      <add-to-group group-id="EditorActions" anchor="first"/>
+    </action>
+    <action id="Emacs+.CommentIndent" class="com.mulgasoft.emacsplus.actions.edit.comment.CommentIndent" text="comment-indent"
+            description="Jump to current comment or insert new one">
+      <add-to-group group-id="EditorActions" anchor="first"/>
+    </action>
+    <action id="Emacs+.CommentIndentNew" class="com.mulgasoft.emacsplus.actions.edit.comment.CommentIndentNew"
+            text="comment-indent-new-line" description="Like &lt;RET&gt; followed by inserting and aligning a comment">
+      <add-to-group group-id="EditorActions" anchor="first"/>
+    </action>
+    <action id="Emacs+.CommentKill" class="com.mulgasoft.emacsplus.actions.edit.comment.CommentKill" text="comment-kill"
+            description="Kill comment on current line">
+      <add-to-group group-id="EditorActions" anchor="first"/>
+    </action>
+    <action id="Emacs+.CommentNextLine" class="com.mulgasoft.emacsplus.actions.edit.comment.CommentNextLine" text="comment-next-line"
+            description="Comment next line">
+      <add-to-group group-id="EditorActions" anchor="first"/>
+    </action>
+    <action id="Emacs+.CommentPreviousLine" class="com.mulgasoft.emacsplus.actions.edit.comment.CommentPreviousLine"
+            text="comment-previous-line" description="Comment previous line">
+      <add-to-group group-id="EditorActions" anchor="first"/>
+    </action>
+
+    <!-- Info commands -->
+    <action id="Emacs+.WhatCursorPos" class="com.mulgasoft.emacsplus.actions.info.WhatCursorPos" text="what-cursor-position"
+            description="Print info on cursor position">
+      <add-to-group group-id="EditorActions" anchor="first"/>
+    </action>
+    <action id="Emacs+.WhatLine" class="com.mulgasoft.emacsplus.actions.info.WhatLine" text="what-line"
+            description="Print current buffer line number">
+      <add-to-group group-id="EditorActions" anchor="first"/>
+    </action>
+
+    <!-- Movement commands -->
+    <action id="Emacs+.ForwardWord" class="com.mulgasoft.emacsplus.actions.motion.ForwardWord" text="forward-word"
+            description="Move point forward a word">
+      <add-to-group group-id="EditorActions" anchor="first"/>
+    </action>
+    <action id="Emacs+.BackwardWord" class="com.mulgasoft.emacsplus.actions.motion.BackwardWord" text="backward-word"
+            description="Move backward until encountering the beginning of a word">
+      <add-to-group group-id="EditorActions" anchor="first"/>
+    </action>
+
+    <action id="Emacs+.Recenter" class="com.mulgasoft.emacsplus.actions.motion.Recenter" text="recenter-top-bottom"
+            description="Move current buffer line to the specified window line">
+      <add-to-group group-id="EditorActions" anchor="first"/>
+    </action>
+
+    <action id="Emacs+.ExchangePointAndMark" class="com.mulgasoft.emacsplus.actions.motion.ExchangePointAndMark"
+            text="exchange-point-and-mark"
+            description="Exchange Point And Mark">
+      <add-to-group group-id="EditorActions" anchor="first"/>
+    </action>
+
+    <action id="Emacs+.BackToIndentation" class="com.mulgasoft.emacsplus.actions.motion.BackToIndentation" text="back-to-indentation"
+            description="Move point to the first non-whitespace character on this line">
+      <add-to-group group-id="EditorActions" anchor="first"/>
+    </action>
+
+    <!-- Isearch commands-->
+    <action id="Emacs+.ISearchForward" class="com.mulgasoft.emacsplus.actions.search.ISearchForward" text="isearch-forward"
+            description="Incremental Search Forward">
+      <add-to-group group-id="EditorActions" anchor="before" relative-to-action="Find"/>
+    </action>
+    <action id="Emacs+.ISearchForwardRegexp" class="com.mulgasoft.emacsplus.actions.search.ISearchForwardRegexp"
+            text="isearch-forward-regexp" description="Do incremental search forward for regular expression">
+      <add-to-group group-id="EditorActions" anchor="first"/>
+    </action>
+    <action id="Emacs+.ISearchBackward" class="com.mulgasoft.emacsplus.actions.search.ISearchBackward" text="isearch-backward"
+            description="Incremental search backwards">
+      <add-to-group group-id="EditorActions" anchor="first"/>
+    </action>
+    <action id="Emacs+.ISearchBackwardRegexp" class="com.mulgasoft.emacsplus.actions.search.ISearchBackwardRegexp"
+            text="isearch-backward-regexp" description="Do incremental search backward for regular expression">
+      <add-to-group group-id="EditorActions" anchor="first"/>
+    </action>
+
+    <action id="Emacs+.QueryReplace" class="com.mulgasoft.emacsplus.actions.search.QueryReplace" text="query-replace"
+            description="Replace some occurrences of FROM-STRING with TO-STRING.">
+      <add-to-group group-id="EditorActions" anchor="after" relative-to-action="Emacs+.ISearchForward"/>
+    </action>
+    <action id="Emacs+.QueryReplaceRegexp" class="com.mulgasoft.emacsplus.actions.search.QueryReplaceRegexp" text="query-replace-regexp"
+            description="Replace some matches for REGEXP with NEWSTRING">
+      <add-to-group group-id="EditorActions" anchor="after" relative-to-action="Emacs+.QueryReplace"/>
+    </action>
+
+    <!-- Isearch history commands-->
+    <action id="Emacs+.ISearchHistoryNext" class="com.mulgasoft.emacsplus.actions.search.ISearchHistoryNext" text="isearch-history-next"
+            description="Search for the next item in the search history">
+      <add-to-group group-id="EditorActions" anchor="first"/>
+    </action>
+    <action id="Emacs+.ISearchHistoryPrevious" class="com.mulgasoft.emacsplus.actions.search.ISearchHistoryPrevious"
+            text="isearch-history-previous" description="Search for the previous item in the search history">
+      <add-to-group group-id="EditorActions" anchor="first"/>
+    </action>
+
+    <!-- Isearch key commands-->
+    <action id="Emacs+.ISYankNextWord" class="com.mulgasoft.emacsplus.actions.search.ISYankNextWord" text="is-yank-next-word"
+            description=" Yank next word or character in buffer onto the end of the search string and search for it">
+      <add-to-group group-id="EditorActions" anchor="last"/>
+    </action>
+    <action id="Emacs+.ISYankLast" class="com.mulgasoft.emacsplus.actions.search.ISYankLast" text="is-yank-last"
+            description="Yank the last string of killed text">
+      <add-to-group group-id="EditorActions" anchor="last"/>
+    </action>
+    <action id="Emacs+.ISYankChar" class="com.mulgasoft.emacsplus.actions.search.ISYankChar" text="is-yank-char"
+            description="Yank char from buffer onto end of search string and search for it">
+      <add-to-group group-id="EditorActions" anchor="first"/>
+    </action>
+    <action id="Emacs+.ISDeleteChar" class="com.mulgasoft.emacsplus.actions.search.ISDeleteChar" text="is-delete-char"
+            description="Delete character from end of search string">
+      <add-to-group group-id="EditorActions" anchor="first"/>
+    </action>
+    <action id="Emacs+.ISYankLine" class="com.mulgasoft.emacsplus.actions.search.ISYankLine" text="is-yank-line"
+            description="Yank rest of line onto end of search string and search for it">
+      <add-to-group group-id="EditorActions" anchor="before" relative-to-action="Emacs+.Yank"/>
+    </action>
+    <action id="Emacs+.ISForwardDelete" class="com.mulgasoft.emacsplus.actions.search.ISForwardDelete" text="is-forward-delete"
+            description="Allow forward delete in isearch minibuffer">
+      <add-to-group group-id="EditorActions" anchor="first"/>
+    </action>
+    <action id="Emacs+.ISRegex" class="com.mulgasoft.emacsplus.actions.search.ISRegex" text="is-regex"
+            description="Toggle regular expression mode">
+      <add-to-group group-id="EditorActions" anchor="first"/>
+    </action>
+    <action id="Emacs+.ISWords" class="com.mulgasoft.emacsplus.actions.search.ISWords" text="is-word" description="Toggle Words mode">
+      <add-to-group group-id="EditorActions" anchor="first"/>
+    </action>
+    <action id="Emacs+.ISCase" class="com.mulgasoft.emacsplus.actions.search.ISCase" text="is-case"
+            description="Toggles search case-sensitivity">
+      <add-to-group group-id="EditorActions" anchor="before" relative-to-action="Emacs+.CapitalizeWord"/>
+    </action>
+    <action id="Emacs+.ISMultiLine" class="com.mulgasoft.emacsplus.actions.search.ISMultiLine" text="is-multiline"
+            description="Toggle multi-line isearch minibuffer">
+      <add-to-group group-id="EditorActions" anchor="first"/>
+    </action>
+
+    <!-- Marker commands -->
+    <action id="Emacs+.AppendNextKill" class="com.mulgasoft.emacsplus.actions.info.AppendNextKill" text="append-next-kill"
+            description="Append Next Kill">
+      <add-to-group group-id="EditorActions" anchor="after" relative-to-action="Emacs+.ISDeleteChar"/>
+    </action>
+
+    <!-- basic tool window navigation -->
+
+    <action id="Emacs+.TWEnd" class="com.mulgasoft.emacsplus.actions.tool.TWAction" text="tw-end"/>
+    <action id="Emacs+.TWBegin" class="com.mulgasoft.emacsplus.actions.tool.TWAction" text="tw-begin"/>
+    <action id="Emacs+.TWScrollUp" class="com.mulgasoft.emacsplus.actions.tool.TWAction" text="tw-scroll-up"/>
+    <action id="Emacs+.TWScrollDown" class="com.mulgasoft.emacsplus.actions.tool.TWAction" text="tw-scroll-down"/>
+    <action id="Emacs+.TWSelectNext" class="com.mulgasoft.emacsplus.actions.tool.TWAction" text="tw-select-next"/>
+    <action id="Emacs+.TWSelectPrevious" class="com.mulgasoft.emacsplus.actions.tool.TWAction" text="tw-select-previous"/>
+    <action id="Emacs+.TWInterrupt" class="com.mulgasoft.emacsplus.actions.tool.TWInterrupt" text="tw-interrupt"/>
+
+    <!-- ***** Wrapper commands ***** -->
+    <action id="Emacs+.KillLine" class="com.mulgasoft.emacsplus.actions.wrapper.KillLine" text="kill-line"
+            description="Kill the rest of the current line">
+      <add-to-group group-id="EditorActions" anchor="first"/>
+    </action>
+    <action id="Emacs+.KillWholeLine" class="com.mulgasoft.emacsplus.actions.wrapper.KillWholeLine" text="kill-whole-line"
+            description="Kill current line">
+      <add-to-group group-id="EditorActions" anchor="first"/>
+    </action>
+    <action id="Emacs+.KillRegion" class="com.mulgasoft.emacsplus.actions.wrapper.KillRegion" text="kill-region"
+            description="Cut text of selected region">
+      <add-to-group group-id="EditorActions" anchor="first"/>
+    </action>
+    <action id="Emacs+.SaveRegion" class="com.mulgasoft.emacsplus.actions.wrapper.SaveRegion" text="kill-ring-save"
+            description="Save the region as if killed, but don&#39;t kill it">
+      <add-to-group group-id="EditorActions" anchor="last"/>
+    </action>
+    <action id="Emacs+.KillWord" class="com.mulgasoft.emacsplus.actions.wrapper.KillWord" text="kill-word"
+            description="Kill characters forward until encountering the end of a word">
+      <add-to-group group-id="EditorActions" anchor="first"/>
+    </action>
+    <action id="Emacs+.KillWordBackward" class="com.mulgasoft.emacsplus.actions.wrapper.KillWordBackward" text="backward-kill-word"
+            description="Kill characters backward until encountering the beginning of a word">
+      <add-to-group group-id="EditorActions" anchor="first"/>
+    </action>
+
+    <action id="Emacs+.DeleteOtherWindows" class="com.mulgasoft.emacsplus.actions.wrapper.DeleteOtherWindows" text="delete-other-windows"
+            description="If window is split then unsplit all, else close adjacent tools">
+      <add-to-group group-id="EditorActions" anchor="first"/>
+    </action>
+
+    <action id="Emacs+.KeyboardQuit" class="com.mulgasoft.emacsplus.actions.wrapper.KeyboardQuit" text="keyboard-quit"
+            description="Signal a &#39;quit&#39; condition">
+      <add-to-group group-id="EditorActions" anchor="first"/>
+    </action>
+
+    <action id="Emacs+.SwitchToBuffer" class="com.mulgasoft.emacsplus.actions.wrapper.SwitchToBuffer" text="switch-to-buffer"
+            description="Select and switch to buffer">
+      <add-to-group group-id="EditorActions" anchor="first"/>
+    </action>
+
+    <!-- TODO: Most recently added -->
+
+  </actions>
+
+</idea-plugin>

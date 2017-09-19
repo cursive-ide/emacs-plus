@@ -1,0 +1,18 @@
+# Created by .ignore support plugin (hsz.mobi)
+/.idea/workspace.xml
+/.idea/replstate.xml
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/dictionaries
+/.idea/shelf
+/.idea/libraries
+/.idea/modules
+/.idea/gradle_extensions.xml
+/.iml
+
+.DS_Store
+
+/.gradle
+/gradle
+/build
+/sandbox
+/gradle.properties
