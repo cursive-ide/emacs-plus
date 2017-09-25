@@ -58,6 +58,10 @@
     ]]></description>
 
   <change-notes><![CDATA[
+     <i>&beta 0.3.300</i><br>
+     <ul>
+      <li>Update plugin to fix API compatibility issues.</li>
+     </ul>
      <i>&beta 0.3.200</i><br>
      <ul>
       <li>Restore isearch changes after IntelliJ's backward incompatible changes in IDEA 15</li>
@@ -74,7 +78,7 @@
   </change-notes>
 
   <!-- please see https://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
-  <idea-version since-build="131"/>
+  <idea-version since-build="145.000"/>
 
   <!-- please see https://confluence.jetbrains.com/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
        on how to target different products -->

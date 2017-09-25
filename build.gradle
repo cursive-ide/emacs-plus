@@ -3,11 +3,12 @@ plugins {
 }
 
 group 'com.cursive-ide'
-version '0.3.200'
+version '0.3.300'
 
 intellij {
   version 'IC-2017.2'
   pluginName 'emacs-plus'
+  updateSinceUntilBuild false
 }
 
 publishPlugin {
@@ -28,5 +29,5 @@ repositories {
 }
 
 dependencies {
-  compile name: 'emacs-plus-0.3.200'
+  compile name: 'emacs-plus-original-0.3.200'
 }
