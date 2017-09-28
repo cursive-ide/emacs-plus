@@ -8,6 +8,8 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import javax.swing.text.JTextComponent;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 public class ISearch {
   private final SearchReplaceComponent searchComp;
@@ -59,7 +61,13 @@ public class ISearch {
   }
 
   public void replaceCurrent() {
-    session.replaceCurrent();
+    try {
+      // Became private in 2017.x
+      Method method = session.getClass().getDeclaredMethod("replaceCurrent");
+      method.setAccessible(true);
+      method.invoke(session);
+    } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException ignored) {
+    }
   }
 
   public void showHistory(boolean var1, JTextComponent var2) {

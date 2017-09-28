@@ -7,6 +7,7 @@ import com.intellij.openapi.keymap.ex.KeymapManagerEx;
 import com.intellij.openapi.keymap.impl.KeymapImpl;
 import com.intellij.openapi.util.JDOMUtil;
 import org.jdom.Document;
+import org.jdom.Element;
 import org.jetbrains.annotations.NonNls;
 
 import javax.swing.*;
@@ -88,8 +89,8 @@ public class Keymaps {
       if (stream != null) {
         Document document = JDOMUtil.loadDocument(stream);
         KeymapManagerEx mgr = KeymapManagerEx.getInstanceEx();
-        KeymapImpl emKeymap = new KeymapImpl();
-        emKeymap.readExternal(document.getRootElement(), mgr.getAllKeymaps());
+        EmacsPlusKeymap emKeymap = new EmacsPlusKeymap();
+        emKeymap.readExternal(document.getRootElement());
         mgr.getSchemeManager().addNewScheme(emKeymap, true);
         mapNames.add(0, emKeymap.getName());
         result = true;
@@ -99,6 +100,13 @@ public class Keymaps {
     }
 
     return result;
+  }
+
+  public static class EmacsPlusKeymap extends KeymapImpl {
+    @Override
+    public void readExternal(Element keymapElement) {
+      super.readExternal(keymapElement);
+    }
   }
 
   public static boolean isAlt() {

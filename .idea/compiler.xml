@@ -12,6 +12,8 @@
       <entry name="!?*.clj" />
     </wildcardResourcePatterns>
     <bytecodeTargetLevel>
+      <module name="dev-emacs-plus_main" target="1.8" />
+      <module name="dev-emacs-plus_test" target="1.8" />
       <module name="emacs-plus_main" target="1.8" />
       <module name="emacs-plus_test" target="1.8" />
     </bytecodeTargetLevel>
