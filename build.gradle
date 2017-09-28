@@ -3,10 +3,10 @@ plugins {
 }
 
 group 'com.cursive-ide'
-version '0.3.300'
+version '0.3.400'
 
 intellij {
-  version 'IC-2017.2'
+  version 'IC-2016.2'
   pluginName 'emacs-plus'
   updateSinceUntilBuild false
 }
@@ -23,11 +23,4 @@ sourceCompatibility = 1.8
 
 repositories {
   mavenCentral()
-  flatDir {
-    dirs 'lib'
-  }
-}
-
-dependencies {
-  compile name: 'emacs-plus-original-0.3.200'
 }

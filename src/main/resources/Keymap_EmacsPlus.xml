@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ Copyright (c) 2015 - Mark C. Feber
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  al~ limitations under the License.
+  ~
+  -->
+<keymap name="Emacs+" parent="Emacs" version="1" disable-mnemonics="true">
+
+  <action id="ToggleBookmark">
+    <keyboard-shortcut first-keystroke="control F10"/>
+  </action>
+
+  <!-- Redefine here to remove conflicts with Sexp commands below -->
+  <action id="EditorCodeBlockStart">
+    <keyboard-shortcut first-keystroke="control alt U"/>
+    <!--<keyboard-shortcut first-keystroke="control alt F"/>-->
+  </action>
+  <action id="EditorCodeBlockEnd">
+    <keyboard-shortcut first-keystroke="control alt D"/>
+    <!--<keyboard-shortcut first-keystroke="control alt B"/>-->
+  </action>
+  <action id="EditorCodeBlockStartWithSelection">
+    <keyboard-shortcut first-keystroke="control shift alt U"/>
+  </action>
+  <action id="EditorCodeBlockEndWithSelection">
+    <keyboard-shortcut first-keystroke="control shift alt D"/>
+  </action>
+
+  <!-- Approximate mapping for M-@ mark-word -->
+  <action id="EditorSelectWord">
+    <keyboard-shortcut first-keystroke="alt AT"/>
+    <keyboard-shortcut first-keystroke="alt shift 2"/>
+  </action>
+
+  <!-- Temporary binding until we support more than two key shortcuts -->
+  <action id="Vcs.QuickListPopupAction">
+    <keyboard-shortcut first-keystroke="control X" second-keystroke="V"/>
+  </action>
+
+  <action id="Diff.KeymapGroup">
+    <keyboard-shortcut first-keystroke="control C" second-keystroke="control E"/>
+  </action>
+
+  <action id="GotoLine">
+    <keyboard-shortcut first-keystroke="alt G" second-keystroke="G"/>
+    <keyboard-shortcut first-keystroke="alt G" second-keystroke="alt G"/>
+  </action>
+  <action id="GotoNextError">
+    <keyboard-shortcut first-keystroke="alt G" second-keystroke="N"/>
+    <keyboard-shortcut first-keystroke="alt G" second-keystroke="alt N"/>
+    <keyboard-shortcut first-keystroke="F2"/>
+    <keyboard-shortcut first-keystroke="control X" second-keystroke="BACK_QUOTE"/>
+  </action>
+  <action id="GotoDeclaration">
+    <keyboard-shortcut first-keystroke="alt PERIOD"/>
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="PERIOD"/>
+    <mouse-shortcut keystroke="control button1"/>
+  </action>
+  <action id="GotoImplementation">
+    <keyboard-shortcut first-keystroke="control U" second-keystroke="alt PERIOD"/>
+  </action>
+
+  <action id="GotoAction">
+    <keyboard-shortcut first-keystroke="alt X"/>
+  </action>
+
+  <action id="FindInPath">
+    <keyboard-shortcut first-keystroke="alt S"/>
+  </action>
+  <action id="FindUsages">
+    <keyboard-shortcut first-keystroke="alt F7"/>
+  </action>
+  <action id="ShowUsages">
+    <keyboard-shortcut first-keystroke="control alt F7"/>
+    <keyboard-shortcut first-keystroke="alt shift S"/>
+  </action>
+
+  <!-- Movement actions rebound by Emacs+ -->
+  <action id="EditorTextStart">
+    <keyboard-shortcut first-keystroke="alt shift COMMA"/>
+    <keyboard-shortcut first-keystroke="alt LESS"/>
+  </action>
+  <action id="EditorTextEnd">
+    <keyboard-shortcut first-keystroke="alt shift PERIOD"/>
+    <keyboard-shortcut first-keystroke="alt GREATER"/>
+  </action>
+
+  <action id="Emacs+.ForwardWord">
+    <keyboard-shortcut first-keystroke="control RIGHT"/>
+    <keyboard-shortcut first-keystroke="alt RIGHT"/>
+    <keyboard-shortcut first-keystroke="alt F"/>
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="F"/>
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="RIGHT"/>
+  </action>
+  <action id="Emacs+.BackwardWord">
+    <keyboard-shortcut first-keystroke="control LEFT"/>
+    <keyboard-shortcut first-keystroke="alt LEFT"/>
+    <keyboard-shortcut first-keystroke="alt B"/>
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="B"/>
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="LEFT"/>
+  </action>
+
+  <action id="EditorNextWord">
+    <!--<keyboard-shortcut first-keystroke="control RIGHT"/>-->
+    <!--<keyboard-shortcut first-keystroke="alt F"/>-->
+    <!--<keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="F"/>-->
+    <!-- TODO: Temporary binding for forward sexp -->
+    <keyboard-shortcut first-keystroke="control alt F"/>
+  </action>
+  <action id="EditorPreviousWord">
+    <!--<keyboard-shortcut first-keystroke="control LEFT"/>-->
+    <!--<keyboard-shortcut first-keystroke="alt B"/>-->
+    <!--<keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="B"/>-->
+    <!-- TODO: Temporary binding for backward sexp -->
+    <keyboard-shortcut first-keystroke="control alt B"/>
+  </action>
+  <action id="EditorKillToWordEnd">
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="D"/>
+    <keyboard-shortcut first-keystroke="alt D"/>
+    <!-- TODO: Temporary binding for kill sexp -->
+    <keyboard-shortcut first-keystroke="control alt K"/>
+  </action>
+
+  <action id="MaximizeToolWindow">
+    <keyboard-shortcut first-keystroke="control X" second-keystroke="1"/>
+  </action>
+  <action id="HideActiveWindow">
+    <keyboard-shortcut first-keystroke="control X" second-keystroke="0"/>
+  </action>
+
+  <!-- keyboard-quit wrapper -->
+  <action id="EditorEscape">
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="ESCAPE"/>
+  </action>
+  <action id="Emacs+.KeyboardQuit">
+    <keyboard-shortcut first-keystroke="control G"/>
+  </action>
+
+  <!-- Edit actions rebound by Emacs+ -->
+
+  <action id="EditorJoinLines">
+    <keyboard-shortcut first-keystroke="control U" second-keystroke="alt shift 6"/>
+    <keyboard-shortcut first-keystroke="control U" second-keystroke="alt CIRCUMFLEX"/>
+  </action>
+
+  <action id="CommentByLineComment">
+    <keyboard-shortcut first-keystroke="control C" second-keystroke="control C"/>
+  </action>
+
+  <action id="EditorStartNewLine">
+    <keyboard-shortcut first-keystroke="control M"/>
+  </action>
+
+  <action id="ReloadFromDisk">
+    <!-- bind this to free up M-U -->
+    <keyboard-shortcut first-keystroke="control X" second-keystroke="control V"/>
+  </action>
+
+  <action id="EmacsStyleIndent">
+    <keyboard-shortcut first-keystroke="TAB"/>
+    <keyboard-shortcut first-keystroke="alt I"/>
+  </action>
+
+  <!-- Debug actions rebound by Emacs+ -->
+  <action id="ToggleLineBreakpoint">
+    <keyboard-shortcut first-keystroke="control X" second-keystroke="SPACE"/>
+  </action>
+  <action id="StepOver">
+    <keyboard-shortcut first-keystroke="control C" second-keystroke="control N"/>
+  </action>
+  <action id="StepInto">
+    <keyboard-shortcut first-keystroke="control C" second-keystroke="control S"/>
+  </action>
+  <action id="Resume">
+    <keyboard-shortcut first-keystroke="control C" second-keystroke="control R"/>
+  </action>
+  <action id="RunToCursor">
+    <keyboard-shortcut first-keystroke="control C" second-keystroke="control U"/>
+  </action>
+  <action id="ToggleTemporaryLineBreakpoint">
+    <keyboard-shortcut first-keystroke="control C" second-keystroke="control T"/>
+  </action>
+  <action id="EvaluateExpression">
+    <keyboard-shortcut first-keystroke="control C" second-keystroke="control P"/>
+  </action>
+
+
+  <!-- Info actions defined by Emacs+ -->
+  <action id="Emacs+.WhatCursorPos">
+    <keyboard-shortcut first-keystroke="control X" second-keystroke="EQUALS"/>
+  </action>
+
+  <!-- Movement actions defined by Emacs+ -->
+  <action id="Emacs+.BackToIndentation">
+    <keyboard-shortcut first-keystroke="alt M"/>
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="M"/>
+  </action>
+
+  <action id="Emacs+.Recenter">
+    <keyboard-shortcut first-keystroke="control L"/>
+  </action>
+  <action id="Emacs+.ExchangePointAndMark">
+    <keyboard-shortcut first-keystroke="control X" second-keystroke="control X"/>
+  </action>
+  <!-- If split, unsplit all, else maximize in frame -->
+  <action id="Emacs+.DeleteOtherWindows">
+    <keyboard-shortcut first-keystroke="control X" second-keystroke="1"/>
+  </action>
+
+  <!-- Edit actions defined by Emacs+ -->
+  <action id="Emacs+.CommentDwim">
+    <keyboard-shortcut first-keystroke="alt SEMICOLON"/>
+    <!-- a convenience binding for lazy fingers -->
+    <keyboard-shortcut first-keystroke="control alt SEMICOLON"/>
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="SEMICOLON"/>
+  </action>
+  <action id="Emacs+.CommentKill">
+    <keyboard-shortcut first-keystroke="control U" second-keystroke="alt SEMICOLON"/>
+    <!-- a convenience binding for lazy fingers -->
+    <keyboard-shortcut first-keystroke="control U" second-keystroke="control alt SEMICOLON"/>
+  </action>
+  <action id="Emacs+.CommentNextLine">
+    <keyboard-shortcut first-keystroke="alt N"/>
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="N"/>
+  </action>
+  <action id="Emacs+.CommentPreviousLine">
+    <keyboard-shortcut first-keystroke="alt P"/>
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="P"/>
+  </action>
+  <action id="Emacs+.CommentIndentNew">
+    <keyboard-shortcut first-keystroke="control alt J"/>
+    <keyboard-shortcut first-keystroke="alt J"/>
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="J"/>
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="control J"/>
+  </action>
+  <action id="Emacs+.TransposeChars">
+    <keyboard-shortcut first-keystroke="control T"/>
+  </action>
+  <action id="Emacs+.TransposeWords">
+    <keyboard-shortcut first-keystroke="alt T"/>
+  </action>
+  <action id="Emacs+.TransposeLines">
+    <keyboard-shortcut first-keystroke="control X" second-keystroke="control T"/>
+  </action>
+
+  <action id="Emacs+.DeleteIndentation">
+    <keyboard-shortcut first-keystroke="alt shift 6"/>
+    <keyboard-shortcut first-keystroke="alt CIRCUMFLEX"/>
+  </action>
+
+  <action id="Emacs+.JustOneSpace">
+    <keyboard-shortcut first-keystroke="alt SPACE"/>
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="SPACE"/>
+  </action>
+  <action id="Emacs+.DeleteHorizSpace">
+    <keyboard-shortcut first-keystroke="alt BACK_SLASH"/>
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="BACK_SLASH"/>
+  </action>
+  <action id="Emacs+.DeleteBlankLines">
+    <keyboard-shortcut first-keystroke="control X" second-keystroke="control O"/>/>
+  </action>
+  <action id="Emacs+.Yank">
+    <keyboard-shortcut first-keystroke="control Y"/>
+  </action>
+  <action id="Emacs+.YankPop">
+    <keyboard-shortcut first-keystroke="alt Y"/>
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="Y"/>
+  </action>
+
+  <action id="Emacs+.CapitalizeWord">
+    <keyboard-shortcut first-keystroke="alt C"/>
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="C"/>
+  </action>
+  <action id="Emacs+.DowncaseWord">
+    <keyboard-shortcut first-keystroke="alt L"/>
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="L"/>
+  </action>
+  <action id="Emacs+.UpcaseWord">
+    <keyboard-shortcut first-keystroke="alt U"/>
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="U"/>
+  </action>
+
+  <!-- Kill related commands -->
+  <action id="Emacs+.KillWord">
+    <keyboard-shortcut first-keystroke="alt D"/>
+    <keyboard-shortcut first-keystroke="control DELETE"/>
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="D"/>
+    <!-- TODO: Temporary binding for kill sexp -->
+    <keyboard-shortcut first-keystroke="control alt K"/>
+  </action>
+  <action id="Emacs+.KillWordBackward">
+    <keyboard-shortcut first-keystroke="alt DELETE"/>
+    <keyboard-shortcut first-keystroke="control BACK_SPACE"/>
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="DELETE"/>
+    <!-- TODO: Temporary binding for backward kill sexp -->
+    <keyboard-shortcut first-keystroke="control alt DELETE"/>
+    <keyboard-shortcut first-keystroke="control alt BACK_SPACE"/>
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="control DELETE"/>
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="control BACK_SPACE"/>
+  </action>
+  <action id="Emacs+.KillLine">
+    <keyboard-shortcut first-keystroke="control K"/>
+  </action>
+  <action id="Emacs+.KillWholeLine">
+    <keyboard-shortcut first-keystroke="control shift BACK_SPACE"/>
+  </action>
+  <action id="Emacs+.CutLineBackwardKey">
+    <keyboard-shortcut first-keystroke="alt MINUS" second-keystroke="control K"/>
+  </action>
+  <action id="Emacs+.KillRegion">
+    <keyboard-shortcut first-keystroke="control W"/>
+  </action>
+  <action id="Emacs+.SaveRegion">
+    <keyboard-shortcut first-keystroke="alt W"/>
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="W"/>
+  </action>
+  <action id="Emacs+.AppendNextKill">
+    <keyboard-shortcut first-keystroke="control alt W"/>
+  </action>
+
+  <!-- ISearch actions -->
+  <action id="Emacs+.ISearchForward">
+    <keyboard-shortcut first-keystroke="control S"/>
+  </action>
+  <action id="Emacs+.ISearchForwardRegexp">
+    <keyboard-shortcut first-keystroke="control alt S"/>
+  </action>
+  <action id="Emacs+.ISearchBackward">
+    <keyboard-shortcut first-keystroke="control R"/>
+  </action>
+  <action id="Emacs+.ISearchBackwardRegexp">
+    <keyboard-shortcut first-keystroke="control alt R"/>
+  </action>
+
+  <action id="Emacs+.QueryReplace">
+    <keyboard-shortcut first-keystroke="shift alt 5"/>
+  </action>
+  <action id="Emacs+.QueryReplaceRegexp">
+    <keyboard-shortcut first-keystroke="shift control alt 5"/>
+  </action>
+
+  <!-- ISearch key actions -->
+  <action id="Emacs+.ISYankNextWord">
+    <keyboard-shortcut first-keystroke="control W"/>
+  </action>
+  <action id="Emacs+.ISYankLine">
+    <keyboard-shortcut first-keystroke="control Y"/>
+  </action>
+  <action id="Emacs+.ISYankLast">
+    <keyboard-shortcut first-keystroke="alt Y"/>
+  </action>
+  <action id="Emacs+.ISYankChar">
+    <keyboard-shortcut first-keystroke="control alt Y"/>
+  </action>
+  <action id="Emacs+.ISDeleteChar">
+    <keyboard-shortcut first-keystroke="control alt W"/>
+  </action>
+  <action id="Emacs+.ISCase">
+    <keyboard-shortcut first-keystroke="alt C"/>
+  </action>
+  <action id="Emacs+.ISMultiLine">
+    <keyboard-shortcut first-keystroke="alt M"/>
+  </action>
+  <action id="Emacs+.ISRegex">
+    <keyboard-shortcut first-keystroke="alt R"/>
+  </action>
+  <action id="Emacs+.ISWords">
+    <!-- Inteferes with alt S keystroke in the map as intellij doesn't check if it is enabled in its inInitState keyhandler -->
+    <!--<keyboard-shortcut first-keystroke="alt S" second-keystroke="W"/>-->
+    <keyboard-shortcut first-keystroke="alt W"/>
+  </action>
+  <action id="Emacs+.ISearchHistoryPrevious">
+    <keyboard-shortcut first-keystroke="alt P"/>
+  </action>
+  <action id="Emacs+.ISearchHistoryNext">
+    <keyboard-shortcut first-keystroke="alt N"/>
+  </action>
+
+  <!-- Wrapper actions  -->
+
+  <action id="Emacs+.ISEnter">
+    <keyboard-shortcut first-keystroke="ENTER"/>
+  </action>
+
+  <action id="Emacs+.ISForwardDelete">
+    <keyboard-shortcut first-keystroke="control D"/>
+  </action>
+
+  <action id="Emacs+.SwitchToBuffer">
+    <keyboard-shortcut first-keystroke="control X" second-keystroke="B"/>
+  </action>
+  <action id="Switcher">
+    <!--<keyboard-shortcut first-keystroke="control X" second-keystroke="B"/>-->
+  </action>
+  <action id="RecentFiles">
+    <!--<keyboard-shortcut first-keystroke="control X" second-keystroke="B"/>-->
+  </action>
+
+  <!-- Tool Window actions -->
+  <action id="Emacs+.TWSelectNext">
+    <keyboard-shortcut first-keystroke="control N"/>
+  </action>
+  <action id="Emacs+.TWSelectPrevious">
+    <keyboard-shortcut first-keystroke="control P"/>
+  </action>
+  <action id="Emacs+.TWInterrupt">
+    <keyboard-shortcut first-keystroke="control G"/>
+    <keyboard-shortcut first-keystroke="control X" second-keystroke="O"/>
+  </action>
+  <action id="Emacs+.TWScrollUp">
+    <keyboard-shortcut first-keystroke="control V"/>
+  </action>
+  <action id="Emacs+.TWScrollDown">
+    <keyboard-shortcut first-keystroke="alt V"/>
+  </action>
+  <action id="Emacs+.TWBegin">
+    <keyboard-shortcut first-keystroke="alt shift COMMA"/>
+    <keyboard-shortcut first-keystroke="alt LESS"/>
+  </action>
+  <action id="Emacs+.TWEnd">
+    <keyboard-shortcut first-keystroke="alt shift PERIOD"/>
+    <keyboard-shortcut first-keystroke="alt GREATER"/>
+  </action>
+
+  <!-- remap conflicting tool binding -->
+  <action id="FileChooser.TogglePathShowing">
+    <keyboard-shortcut first-keystroke="control X" second-keystroke="control P"/>
+  </action>
+
+
+  <!-- <action id="Emacs+.maximize">
+              <keyboard-shortcut first-keystroke="control C" second-keystroke="control M"/>
+       </action> -->
+
+  <!-- Disable Intellij shortcuts -->
+  <action id="$Copy">
+    <!--<keyboard-shortcut first-keystroke="control INSERT"/>-->
+    <!--<keyboard-shortcut first-keystroke="alt C"/>-->
+    <!--<keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="W"/>-->
+  </action>
+  <action id="$Cut">
+    <!--<keyboard-shortcut first-keystroke="shift DELETE"/>-->
+    <!--<keyboard-shortcut first-keystroke="alt X"/>-->
+  </action>
+  <action id="EditorCutLineBackward">
+    <!--<keyboard-shortcut first-keystroke="alt MINUS" second-keystroke="control K"/>-->
+  </action>
+  <action id="EditorCutLineEnd">
+    <!--<keyboard-shortcut first-keystroke="control K"/>-->
+  </action>
+  <action id="EditorKillToWordEnd">
+    <!--<keyboard-shortcut first-keystroke="alt D"/>-->
+  </action>
+  <action id="EditorDeleteToWordStart">
+    <!--<keyboard-shortcut first-keystroke="control BACK_SPACE"/>-->
+    <!--<keyboard-shortcut first-keystroke="alt BACK_SPACE"/>-->
+    <!--<keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="BACK_SPACE"/>-->
+  </action>
+  <action id="EditorKillToWordStart">
+    <!--<keyboard-shortcut first-keystroke="alt DELETE"/>-->
+  </action>
+
+  <action id="EditorScrollToCenter">
+    <!--<keyboard-shortcut first-keystroke="control M"/>-->
+  </action>
+
+  <action id="EditorSwapSelectionBoundaries">
+    <!--<keyboard-shortcut first-keystroke="control X" second-keystroke="X"/>-->
+  </action>
+  <action id="Find">
+    <!--<keyboard-shortcut first-keystroke="control alt S"/>-->
+    <!--<keyboard-shortcut first-keystroke="alt F3"/>-->
+    <!--<keyboard-shortcut first-keystroke="control S"/>-->
+  </action>
+  <action id="FindPrevious">
+    <!--<keyboard-shortcut first-keystroke="shift F3"/>-->
+    <!--<keyboard-shortcut first-keystroke="alt R"/>-->
+    <!--<keyboard-shortcut first-keystroke="control R"/>-->
+  </action>
+  <action id="Replace">
+    <!--<keyboard-shortcut first-keystroke="shift alt 5"/>-->
+  </action>
+
+  <action id="JumpToLastChange">
+    <!--<keyboard-shortcut first-keystroke="control shift BACK_SPACE"/>-->
+  </action>
+  <action id="EditorKillRegion">
+    <!--<keyboard-shortcut first-keystroke="control W"/>-->
+  </action>
+  <action id="$Paste">
+    <!--<keyboard-shortcut first-keystroke="alt P"/>-->
+    <!--<keyboard-shortcut first-keystroke="shift INSERT"/>-->
+    <!--<keyboard-shortcut first-keystroke="control Y"/>-->
+  </action>
+  <action id="PasteMultiple">
+    <!--<keyboard-shortcut first-keystroke="alt Y"/>-->
+  </action>
+  <action id="NextProjectWindow">
+    <!--<keyboard-shortcut first-keystroke="control X" second-keystroke="control O"/>-->
+  </action>
+  <action id="UnsplitAll">
+    <!--<keyboard-shortcut first-keystroke="control X" second-keystroke="1" />-->
+  </action>
+  <action id="Vcs.UpdateProject"/>
+
+  <!-- These two commands interfere with ^D in an isearch minibuffer -->
+  <action id="CompareTwoFiles">
+    <!--<keyboard-shortcut first-keystroke="control D"/>-->
+  </action>
+  <action id="Diff.ShowDiff">
+    <!--<keyboard-shortcut first-keystroke="control D"/>-->
+  </action>
+
+  <!-- Should not have to be disabled, but suddenly started interfering with kill-line for no apparent reason -->
+  <action id="CheckinProject"/>
+</keymap>

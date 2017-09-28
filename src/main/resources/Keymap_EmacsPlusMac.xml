@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2015 - Mark C. Feber
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.b
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+
+<!-- Use meta for alt -->
+<keymap name="Mac Emacs+" parent="Emacs+" version="1" disable-mnemonics="true">
+
+  <!-- Rebind Intellij commands with meta -->
+
+  <action id="CodeCompletion">
+    <keyboard-shortcut first-keystroke="meta SLASH"/>
+  </action>
+  <action id="SmartTypeCompletion">
+    <keyboard-shortcut first-keystroke="shift control SPACE"/>
+    <keyboard-shortcut first-keystroke="control meta SLASH"/>
+  </action>
+
+  <!-- Redefine here to remove conflicts with Sexp commands below -->
+  <action id="EditorCodeBlockStart">
+    <keyboard-shortcut first-keystroke="control meta U"/>
+    <!--<keyboard-shortcut first-keystroke="control alt F"/>-->
+  </action>
+  <action id="EditorCodeBlockEnd">
+    <keyboard-shortcut first-keystroke="control alt D"/>
+    <!--<keyboard-shortcut first-keystroke="control alt B"/>-->
+  </action>
+  <action id="EditorCodeBlockStartWithSelection">
+    <keyboard-shortcut first-keystroke="control shift meta U"/>
+  </action>
+  <action id="EditorCodeBlockEndWithSelection">
+    <keyboard-shortcut first-keystroke="control shift alt D"/>
+  </action>
+
+  <!-- Approximate mapping for M-@ mark-word -->
+  <action id="EditorSelectWord">
+    <keyboard-shortcut first-keystroke="meta AT"/>
+    <keyboard-shortcut first-keystroke="meta shift 2"/>
+  </action>
+
+  <action id="Emacs+.ForwardWord">
+    <keyboard-shortcut first-keystroke="control RIGHT"/>
+    <keyboard-shortcut first-keystroke="meta RIGHT"/>
+    <keyboard-shortcut first-keystroke="meta F"/>
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="F"/>
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="RIGHT"/>
+  </action>
+  <action id="Emacs+.BackwardWord">
+    <keyboard-shortcut first-keystroke="control LEFT"/>
+    <keyboard-shortcut first-keystroke="meta LEFT"/>
+    <keyboard-shortcut first-keystroke="meta B"/>
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="B"/>
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="LEFT"/>
+  </action>
+
+  <action id="EditorNextWord">
+    <!--<keyboard-shortcut first-keystroke="control RIGHT"/>-->
+    <!--<keyboard-shortcut first-keystroke="meta F"/>-->
+    <!--<keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="F"/>-->
+    <!-- TODO: Temporary binding for forward sexp -->
+    <keyboard-shortcut first-keystroke="control meta F"/>
+  </action>
+  <action id="EditorPreviousWord">
+    <!--<keyboard-shortcut first-keystroke="control LEFT"/>-->
+    <!--<keyboard-shortcut first-keystroke="meta B"/>-->
+    <!--<keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="B"/>-->
+    <!-- TODO: Temporary binding for backward sexp -->
+    <keyboard-shortcut first-keystroke="control meta B"/>
+  </action>
+
+  <!-- Kill related commands -->
+  <action id="Emacs+.KillWord">
+    <keyboard-shortcut first-keystroke="meta D"/>
+    <keyboard-shortcut first-keystroke="control DELETE"/>
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="D"/>
+    <!-- TODO: Temporary binding for kill sexp -->
+    <keyboard-shortcut first-keystroke="control meta K"/>
+  </action>
+  <action id="Emacs+.KillWordBackward">
+    <keyboard-shortcut first-keystroke="meta DELETE"/>
+    <!-- for smaller mac keyboards support BACK_SPACE instead of requiring Fn DELETE -->
+    <keyboard-shortcut first-keystroke="meta BACK_SPACE"/>
+    <keyboard-shortcut first-keystroke="control BACK_SPACE"/>
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="DELETE"/>
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="BACK_SPACE"/>
+    <!-- TODO: Temporary binding for backward kill sexp -->
+    <keyboard-shortcut first-keystroke="control meta DELETE"/>
+    <keyboard-shortcut first-keystroke="control meta BACK_SPACE"/>
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="control DELETE"/>
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="control BACK_SPACE"/>
+  </action>
+  <!--<action id="EditorCutLineBackward">-->
+  <action id="Emacs+.CutLineBackwardKey">
+    <keyboard-shortcut first-keystroke="meta MINUS" second-keystroke="control K"/>
+  </action>
+  <action id="Emacs+.SaveRegion">
+    <keyboard-shortcut first-keystroke="meta W"/>
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="W"/>
+  </action>
+  <action id="Emacs+.AppendNextKill">
+    <keyboard-shortcut first-keystroke="control meta W"/>
+  </action>
+
+  <action id="GotoLine">
+    <keyboard-shortcut first-keystroke="meta G" second-keystroke="G"/>
+    <keyboard-shortcut first-keystroke="meta G" second-keystroke="meta G"/>
+  </action>
+  <action id="GotoNextError">
+    <keyboard-shortcut first-keystroke="meta G" second-keystroke="N"/>
+    <keyboard-shortcut first-keystroke="meta G" second-keystroke="meta N"/>
+    <keyboard-shortcut first-keystroke="F2"/>
+    <keyboard-shortcut first-keystroke="control X" second-keystroke="BACK_QUOTE"/>
+  </action>
+  <action id="GotoDeclaration">
+    <keyboard-shortcut first-keystroke="meta PERIOD"/>
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="PERIOD"/>
+    <mouse-shortcut keystroke="ctrl button1"/>
+  </action>
+  <action id="GotoImplementation">
+    <keyboard-shortcut first-keystroke="control U" second-keystroke="meta PERIOD"/>
+  </action>
+
+  <action id="GotoAction">
+    <keyboard-shortcut first-keystroke="meta X"/>
+  </action>
+
+  <action id="EditorPageUp">
+    <keyboard-shortcut first-keystroke="meta V"/>
+  </action>
+  <action id="EditorTextStart">
+    <keyboard-shortcut first-keystroke="meta shift COMMA"/>
+    <keyboard-shortcut first-keystroke="meta LESS"/>
+  </action>
+  <action id="EditorTextEnd">
+    <keyboard-shortcut first-keystroke="meta shift PERIOD"/>
+    <keyboard-shortcut first-keystroke="meta GREATER"/>
+  </action>
+
+  <action id="MethodUp">
+    <keyboard-shortcut first-keystroke="meta UP"/>
+    <keyboard-shortcut first-keystroke="control meta A"/>
+  </action>
+  <action id="MethodDown">
+    <keyboard-shortcut first-keystroke="meta UP"/>
+    <keyboard-shortcut first-keystroke="control meta E"/>
+  </action>
+  <action id="FindInPath">
+    <keyboard-shortcut first-keystroke="meta S"/>
+  </action>
+  <action id="FindUsages">
+    <keyboard-shortcut first-keystroke="meta F7"/>
+  </action>
+  <action id="ShowUsages">
+    <keyboard-shortcut first-keystroke="control meta F7"/>
+    <keyboard-shortcut first-keystroke="meta shift S"/>
+  </action>
+
+
+  <!-- Edit actions rebound by Emacs+ -->
+  <action id="EditorJoinLines">
+    <keyboard-shortcut first-keystroke="control U" second-keystroke="meta shift 6"/>
+    <keyboard-shortcut first-keystroke="control U" second-keystroke="meta CIRCUMFLEX"/>
+  </action>
+
+  <action id="EmacsStyleIndent">
+    <keyboard-shortcut first-keystroke="TAB"/>
+    <keyboard-shortcut first-keystroke="meta I"/>
+  </action>
+
+  <!-- Rebind Emacs+ commands with meta -->
+
+  <!-- Emacs+ motion commands -->
+  <action id="Emacs+.BackToIndentation">
+    <keyboard-shortcut first-keystroke="meta M"/>
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="M"/>
+  </action>
+
+  <!-- Emacs+ edit commands -->
+  <action id="Emacs+.CommentDwim">
+    <keyboard-shortcut first-keystroke="meta SEMICOLON"/>
+    <!-- a convenience binding for lazy fingers -->
+    <keyboard-shortcut first-keystroke="control meta SEMICOLON"/>
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="SEMICOLON"/>
+  </action>
+  <action id="Emacs+.CommentKill">
+    <keyboard-shortcut first-keystroke="control U" second-keystroke="meta SEMICOLON"/>
+    <!-- a convenience binding for lazy fingers -->
+    <keyboard-shortcut first-keystroke="control U" second-keystroke="control meta SEMICOLON"/>
+  </action>
+  <action id="Emacs+.CommentNextLine">
+    <keyboard-shortcut first-keystroke="meta N"/>
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="N"/>
+  </action>
+  <action id="Emacs+.CommentPreviousLine">
+    <keyboard-shortcut first-keystroke="meta P"/>
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="P"/>
+  </action>
+  <action id="Emacs+.CommentIndentNew">
+    <keyboard-shortcut first-keystroke="control meta J"/>
+    <keyboard-shortcut first-keystroke="meta J"/>
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="J"/>
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="control J"/>
+  </action>
+
+  <action id="Emacs+.DeleteIndentation">
+    <keyboard-shortcut first-keystroke="meta shift 6"/>
+    <keyboard-shortcut first-keystroke="meta CIRCUMFLEX"/>
+  </action>
+
+  <action id="Emacs+.JustOneSpace">
+    <keyboard-shortcut first-keystroke="meta SPACE"/>
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="SPACE"/>
+  </action>
+  <action id="Emacs+.DeleteHorizSpace">
+    <keyboard-shortcut first-keystroke="meta BACK_SLASH"/>
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="BACK_SLASH"/>
+  </action>
+  <action id="Emacs+.YankPop">
+    <keyboard-shortcut first-keystroke="meta Y"/>
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="Y"/>
+  </action>
+
+  <action id="Emacs+.CapitalizeWord">
+    <keyboard-shortcut first-keystroke="meta C"/>
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="C"/>
+  </action>
+  <action id="Emacs+.DowncaseWord">
+    <keyboard-shortcut first-keystroke="meta L"/>
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="L"/>
+  </action>
+  <action id="Emacs+.UpcaseWord">
+    <keyboard-shortcut first-keystroke="meta U"/>
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="U"/>
+  </action>
+  <action id="Emacs+.TransposeWords">
+    <keyboard-shortcut first-keystroke="meta T"/>
+  </action>
+
+  <!-- ISearch actions -->
+  <action id="Emacs+.ISearchForwardRegexp">
+    <keyboard-shortcut first-keystroke="control meta S"/>
+  </action>
+  <action id="Emacs+.ISearchBackwardRegexp">
+    <keyboard-shortcut first-keystroke="control meta R"/>
+  </action>
+
+  <action id="Emacs+.QueryReplace">
+    <keyboard-shortcut first-keystroke="shift meta 5"/>
+  </action>
+  <action id="Emacs+.QueryReplaceRegexp">
+    <keyboard-shortcut first-keystroke="shift control meta 5"/>
+  </action>
+
+  <!-- ISearch key actions bound to meta -->
+  <action id="Emacs+.ISYankLast">
+    <keyboard-shortcut first-keystroke="meta Y"/>
+  </action>
+  <action id="Emacs+.ISYankChar">
+    <keyboard-shortcut first-keystroke="control meta Y"/>
+  </action>
+  <action id="Emacs+.ISDeleteChar">
+    <keyboard-shortcut first-keystroke="control meta W"/>
+  </action>
+  <action id="Emacs+.ISCase">
+    <keyboard-shortcut first-keystroke="meta C"/>
+  </action>
+  <action id="Emacs+.ISMultiLine">
+    <keyboard-shortcut first-keystroke="meta M"/>
+  </action>
+  <action id="Emacs+.ISRegex">
+    <keyboard-shortcut first-keystroke="meta R"/>
+  </action>
+  <action id="Emacs+.ISWords">
+    <!-- Inteferes with alt S keystroke in the map as intellij doesn't check if it is enabled in its inInitState keyhandler -->
+    <!--<keyboard-shortcut first-keystroke="meta S" second-keystroke="W"/>-->
+    <keyboard-shortcut first-keystroke="meta W"/>
+  </action>
+  <action id="Emacs+.ISearchHistoryPrevious">
+    <keyboard-shortcut first-keystroke="meta P"/>
+  </action>
+  <action id="Emacs+.ISearchHistoryNext">
+    <keyboard-shortcut first-keystroke="meta N"/>
+  </action>
+
+  <action id="Emacs+.TWScrollDown">
+    <keyboard-shortcut first-keystroke="meta V"/>
+  </action>
+  <action id="Emacs+.TWBegin">
+    <keyboard-shortcut first-keystroke="meta shift COMMA"/>
+    <keyboard-shortcut first-keystroke="meta LESS"/>
+  </action>
+  <action id="Emacs+.TWEnd">
+    <keyboard-shortcut first-keystroke="meta shift PERIOD"/>
+    <keyboard-shortcut first-keystroke="meta GREATER"/>
+  </action>
+
+  <!-- Disable intellij conflicts -->
+  <action id="EditorDuplicate">
+    <!-- <keyboard-shortcut first-keystroke="meta D"/> -->
+  </action>
+
+</keymap>

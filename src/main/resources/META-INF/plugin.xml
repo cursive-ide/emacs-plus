@@ -18,7 +18,7 @@
 <idea-plugin url="https://github.com/cursive-ide/emacs-plus">
   <id>com.cursive-ide.emacsplus</id>
   <name>Emacs+ Patched</name>
-  <version>0.3.200</version>
+  <version>Replaced By Gradle</version>
   <vendor url="https://ideogram.co.nz"
           email="ideogram@ideogram.co.nz">
     Ideogram, Ltd.
@@ -58,6 +58,11 @@
     ]]></description>
 
   <change-notes><![CDATA[
+     <i>&beta 0.3.400</i><br>
+     <ul>
+      <li>Recompile plugin completely from decompiled sources.</li>
+      <li>Update plugin to use API from 2016.1 & 2016.2.</li>
+     </ul>
      <i>&beta 0.3.300</i><br>
      <ul>
       <li>Update plugin to fix API compatibility issues.</li>
@@ -78,7 +83,7 @@
   </change-notes>
 
   <!-- please see https://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
-  <idea-version since-build="145.000"/>
+  <idea-version since-build="145.000" until-build="162.*"/>
 
   <!-- please see https://confluence.jetbrains.com/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
        on how to target different products -->
@@ -93,7 +98,7 @@
   <application-components>
     <!-- Add your application components here -->
     <component>
-      <implementation-class>cursive.emacsplus.EmacsPlus</implementation-class>
+      <implementation-class>com.mulgasoft.emacsplus.EmacsPlus</implementation-class>
     </component>
   </application-components>
 
@@ -144,7 +149,7 @@
             description="Delete all spaces and tabs around point, leaving one space">
       <add-to-group group-id="EditorActions" anchor="first"/>
     </action>
-    <action id="Emacs+.DeleteIndentation" class="cursive.emacsplus.actions.wrapper.DeleteIndentation" text="delete-indentation"
+    <action id="Emacs+.DeleteIndentation" class="com.mulgasoft.emacsplus.actions.wrapper.DeleteIndentation" text="delete-indentation"
             description="Join this line to previous and fix up whitespace at join">
       <add-to-group group-id="EditorActions" anchor="first"/>
     </action>

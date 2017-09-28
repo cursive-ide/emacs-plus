@@ -1,0 +1,67 @@
+<!--
+  ~ Copyright (c) 2015 - Mark C. Feber
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+
+<keymap name="Mac Emacs+ fr" parent="Mac Emacs+" version="1" disable-mnemonics="true">
+
+  <!-- shift LESS == GREATER -->
+  <action id="EditorTextStart">
+    <keyboard-shortcut first-keystroke="meta LESS"/>
+  </action>
+  <action id="EditorTextEnd">
+    <keyboard-shortcut first-keystroke="meta shift LESS"/>
+  </action>
+
+  <action id="Emacs+.TWBegin">
+    <keyboard-shortcut first-keystroke="meta LESS"/>
+  </action>
+  <action id="Emacs+.TWEnd">
+    <keyboard-shortcut first-keystroke="meta shift LESS"/>
+  </action>
+
+  <!-- shift SEMICOLON == PERIOD -->
+  <action id="GotoDeclaration">
+    <keyboard-shortcut first-keystroke="alt shift SEMICOLON"/>
+    <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="shift SEMICOLON"/>
+    <mouse-shortcut keystroke="ctrl button1"/>
+  </action>
+
+  <!-- shift COLON == SLASH -->
+  <action id="CodeCompletion">
+    <keyboard-shortcut first-keystroke="meta SLASH"/>
+    <keyboard-shortcut first-keystroke="meta shift COLON"/>
+  </action>
+  <action id="SmartTypeCompletion">
+    <keyboard-shortcut first-keystroke="shift control SPACE"/>
+    <keyboard-shortcut first-keystroke="control meta shift COLON"/>
+  </action>
+
+  <action id="$Undo">
+    <keyboard-shortcut first-keystroke="shift control MINUS"/>
+    <keyboard-shortcut first-keystroke="control shift COLON"/>
+  </action>
+
+  <!-- ^ == DEAD_CIRCUMFLEX ?? -->
+  <action id="Emacs+.DeleteIndentation">
+    <keyboard-shortcut first-keystroke="meta CIRCUMFLEX"/>
+    <keyboard-shortcut first-keystroke="meta DEAD_CIRCUMFLEX"/>
+  </action>
+  <action id="EditorJoinLines">
+    <keyboard-shortcut first-keystroke="control U" second-keystroke="meta CIRCUMFLEX"/>
+    <keyboard-shortcut first-keystroke="control U" second-keystroke="meta DEAD_CIRCUMFLEX"/>
+  </action>
+
+</keymap>
