@@ -90,7 +90,7 @@ public class Keymaps {
         KeymapManagerEx mgr = KeymapManagerEx.getInstanceEx();
         KeymapImpl emKeymap = new KeymapImpl();
         emKeymap.readExternal(document.getRootElement(), mgr.getAllKeymaps());
-        mgr.getSchemesManager().addNewScheme(emKeymap, true);
+        mgr.getSchemeManager().addNewScheme(emKeymap, true);
         mapNames.add(0, emKeymap.getName());
         result = true;
       }

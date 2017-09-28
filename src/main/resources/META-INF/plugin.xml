@@ -58,6 +58,10 @@
     ]]></description>
 
   <change-notes><![CDATA[
+     <i>&beta 0.3.500</i><br>
+     <ul>
+      <li>Update plugin to use API from 2016.3.</li>
+     </ul>
      <i>&beta 0.3.400</i><br>
      <ul>
       <li>Recompile plugin completely from decompiled sources.</li>
@@ -83,7 +87,7 @@
   </change-notes>
 
   <!-- please see https://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
-  <idea-version since-build="145.000" until-build="162.*"/>
+  <idea-version since-build="163.000" until-build="163.*"/>
 
   <!-- please see https://confluence.jetbrains.com/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
        on how to target different products -->
