@@ -3,10 +3,10 @@ plugins {
 }
 
 group 'com.cursive-ide'
-version '0.3.600'
+version '0.3.700'
 
 intellij {
-  version '172.4343.14'
+  version '2018.1'
   pluginName 'emacs-plus'
   updateSinceUntilBuild false
 }

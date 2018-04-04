@@ -58,6 +58,10 @@
     ]]></description>
 
   <change-notes><![CDATA[
+     <i>&beta 0.3.700</i><br>
+     <ul>
+      <li>Update plugin for compatibility with 2018.1, and fix one bug.</li>
+     </ul>
      <i>&beta 0.3.600</i><br>
      <ul>
       <li>Update plugin to use API from 2017.x.</li>
