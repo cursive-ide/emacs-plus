@@ -71,7 +71,7 @@ public class EmacsPlus implements ApplicationComponent {
 
   }
 
-  public static void resetCommand(@NotNull String name) {
+  public static void resetCommand(String name) {
     setUltCommand(name);
   }
 
