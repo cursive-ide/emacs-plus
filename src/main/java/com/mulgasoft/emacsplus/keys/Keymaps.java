@@ -3,12 +3,14 @@ package com.mulgasoft.emacsplus.keys;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.keymap.Keymap;
+import com.intellij.openapi.keymap.KeymapManagerListener;
 import com.intellij.openapi.keymap.ex.KeymapManagerEx;
 import com.intellij.openapi.keymap.impl.KeymapImpl;
 import com.intellij.openapi.util.JDOMUtil;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jetbrains.annotations.NonNls;
+import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import java.io.File;
@@ -119,7 +121,12 @@ public class Keymaps {
 
   private static void setupKeymapListener() {
     KeymapManagerEx mgr = KeymapManagerEx.getInstanceEx();
-    mgr.addKeymapManagerListener(Keymaps::activate, ApplicationManager.getApplication());
+    mgr.addKeymapManagerListener(new KeymapManagerListener() {
+      @Override
+      public void activeKeymapChanged(@Nullable Keymap keymap) {
+        activate(keymap);
+      }
+    }, ApplicationManager.getApplication());
     activate(mgr.getActiveKeymap());
   }
 
