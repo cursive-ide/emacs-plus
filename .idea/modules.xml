@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/dev-emacs-plus_main.iml" filepath="$PROJECT_DIR$/.idea/modules/dev-emacs-plus_main.iml" group="emacs-plus" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/dev-emacs-plus_test.iml" filepath="$PROJECT_DIR$/.idea/modules/dev-emacs-plus_test.iml" group="emacs-plus" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/emacs-plus.iml" filepath="$PROJECT_DIR$/.idea/modules/emacs-plus.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/emacs-plus.iml" filepath="$PROJECT_DIR$/.idea/modules/emacs-plus.iml" group="emacs-plus" />
     </modules>
   </component>
 </project>
