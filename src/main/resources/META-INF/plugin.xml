@@ -58,6 +58,11 @@
     ]]></description>
 
   <change-notes><![CDATA[
+     <i>&beta 0.3.900</i><br>
+     <ul>
+      <li>Update plugin for compatibility with 2019.3.</li>
+      <li>This version of the plugin now requires at least 2019.1</li>
+     </ul>
      <i>&beta 0.3.800</i><br>
      <ul>
       <li>Update plugin for compatibility with 2018.2.</li>
@@ -99,7 +104,7 @@
   </change-notes>
 
   <!-- please see https://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
-  <idea-version since-build="171.000"/>
+  <idea-version since-build="191.4212.41"/>
 
   <!-- please see https://confluence.jetbrains.com/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
        on how to target different products -->

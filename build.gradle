@@ -1,19 +1,18 @@
 plugins {
-  id "org.jetbrains.intellij" version "0.2.17"
+  id "org.jetbrains.intellij" version "0.4.16"
 }
 
 group 'com.cursive-ide'
-version '0.3.800'
+version '0.3.900'
 
 intellij {
-  version '2018.2'
+  version '2019.3.3'
   pluginName 'emacs-plus'
   updateSinceUntilBuild false
 }
 
 publishPlugin {
-  username publishUsername
-  password publishPassword
+  token publishToken
   channels publishChannels.split(',')
 }
 
