@@ -12,8 +12,8 @@ intellij {
 }
 
 publishPlugin {
-    token = project.property("publishToken", "")
-    channels = project.property("publishChannels", "").split(',')
+    token = hasProperty('publishToken') ? publishToken : ''
+    channels = hasProperty('publishChannels') ? publishChannels.split(',') : []
 }
 
 apply plugin: 'java'
