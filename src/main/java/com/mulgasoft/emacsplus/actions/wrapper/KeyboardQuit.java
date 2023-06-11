@@ -18,7 +18,6 @@ import java.awt.*;
 public class KeyboardQuit extends EmacsPlusWrapper {
   public KeyboardQuit() {
     super(new Handler(getWrappedHandler("EditorEscape")));
-    setInjectedContext(true);
   }
 
   private static class Handler extends EditorActionHandler {

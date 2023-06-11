@@ -68,6 +68,9 @@
     <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="PERIOD"/>
     <mouse-shortcut keystroke="control button1"/>
   </action>
+  <action id="Back">
+    <keyboard-shortcut first-keystroke="alt COMMA"/>
+  </action>
   <action id="GotoImplementation">
     <keyboard-shortcut first-keystroke="control U" second-keystroke="alt PERIOD"/>
   </action>
@@ -302,6 +305,7 @@
   </action>
   <action id="Emacs+.KillWordBackward">
     <keyboard-shortcut first-keystroke="alt DELETE"/>
+    <keyboard-shortcut first-keystroke="alt BACK_SPACE"/>
     <keyboard-shortcut first-keystroke="control BACK_SPACE"/>
     <keyboard-shortcut first-keystroke="ESCAPE" second-keystroke="DELETE"/>
     <!-- TODO: Temporary binding for backward kill sexp -->
@@ -497,7 +501,7 @@
     <!--<keyboard-shortcut first-keystroke="control shift BACK_SPACE"/>-->
   </action>
   <action id="EditorKillRegion">
-    <!--<keyboard-shortcut first-keystroke="control W"/>-->
+    <keyboard-shortcut first-keystroke="control W"/>
   </action>
   <action id="$Paste">
     <!--<keyboard-shortcut first-keystroke="alt P"/>-->

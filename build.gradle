@@ -1,19 +1,19 @@
 plugins {
-  id "org.jetbrains.intellij" version "0.4.16"
+  id "org.jetbrains.intellij" version "1.14.1"
 }
 
 group 'com.cursive-ide'
-version '0.3.900'
+version '0.3.901'
 
 intellij {
-  version '2019.3.3'
-  pluginName 'emacs-plus'
-  updateSinceUntilBuild false
+  version = '2019.3.3'
+  pluginName = 'emacs-plus'
+  updateSinceUntilBuild = false
 }
 
 publishPlugin {
-  token publishToken
-  channels publishChannels.split(',')
+    token = hasProperty('publishToken') ? publishToken : ''
+    channels = hasProperty('publishChannels') ? publishChannels.split(',') : []
 }
 
 apply plugin: 'java'
